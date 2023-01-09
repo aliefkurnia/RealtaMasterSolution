@@ -1,0 +1,12 @@
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\bin\Debug\net6.0\VBMasterDbLib.deps.json
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\bin\Debug\net6.0\VBMasterDbLib.dll
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\bin\Debug\net6.0\VBMasterDbLib.pdb
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\MasterVbNetApi.vbproj.AssemblyReference.cache
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\MasterVbNetApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\MasterVbNetApi.AssemblyInfoInputs.cache
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\MasterVbNetApi.AssemblyInfo.vb
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\MasterVbNetApi.vbproj.CoreCompileInputs.cache
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\VBMasterDbLib.dll
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\refint\VBMasterDbLib.dll
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\VBMasterDbLib.pdb
+C:\Users\alief\source\batch18\VbAppConsole\RealtaMasterSolution\VBMasterDbLib\obj\Debug\net6.0\ref\VBMasterDbLib.dll
