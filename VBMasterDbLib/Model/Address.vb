@@ -75,12 +75,13 @@
         End Property
 
         Public Overrides Function ToString() As String
-            Return $"addresId: {Addr_Id} " &
-                   $"addressLine1: {Addr_line1} " &
-                   $"addressLine2: {Addr_line2} " &
-                   $"addressPostalCode: {Addr_postal_code} " &
-                   $"addressSpatialLocation: {Addr_spatial_location} " &
-                   $"addressProvId: {Addr_prov_id} "
+            Return $"
+addresId              : {Addr_Id} 
+addressLine1          : {Addr_line1} 
+addressLine2          : {Addr_line2} 
+addressPostalCode     : {Addr_postal_code} 
+addressSpatialLocation: {Addr_spatial_location} 
+addressProvId         : {Addr_prov_id} "
         End Function
 
     End Class

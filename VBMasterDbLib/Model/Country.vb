@@ -6,6 +6,7 @@
         Private _country_region_id As Integer
 
         Public Sub New()
+            Country_region_id = Nothing
         End Sub
 
         Public Sub New(country_id As Integer, country_name As String, country_region_id As Integer)

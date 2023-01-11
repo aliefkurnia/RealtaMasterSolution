@@ -71,7 +71,7 @@ Namespace Repository
 
         Public Function FindAllRegions() As List(Of Regions) Implements IRegionsRepository.FindAllRegions
             Dim RegionsList As New List(Of Regions)
-            Dim sql As String = "SELECT Region_code, Region_name                                              FROM Master.Regions 
+            Dim sql As String = "SELECT Region_code, Region_name FROM Master.Regions 
                                  ORDER BY Region_code DESC;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}

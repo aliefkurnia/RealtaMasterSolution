@@ -23,8 +23,9 @@ Namespace Repository
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
                 Using cmd As New SqlCommand With {.Connection = conn, .CommandText = stmnt}
+                    Dim check = If(Country.Country_region_id.Equals(0), DBNull.Value, Country.Country_region_id)
                     cmd.Parameters.AddWithValue("@country_name", Country.Country_name)
-                    cmd.Parameters.AddWithValue("@country_region_id", Country.Country_region_id)
+                    cmd.Parameters.AddWithValue("@country_region_id", check)
 
                     Try
                         conn.Open()
@@ -86,7 +87,7 @@ Namespace Repository
                             CountryList.Add(New Country() With {
                                 .Country_id = reader.GetInt32(0),
                                 .Country_name = reader.GetString(1),
-                                .Country_region_id = reader.GetInt32(2)
+                                .Country_region_id = If(reader.IsDBNull(2), Nothing, reader.GetInt32(2))
                             })
                         End While
 

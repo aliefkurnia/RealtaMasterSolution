@@ -10,10 +10,83 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
     {
 
         private static IConfigurationRoot? Configuration;
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             BuildConfig();
             IHotelRealtaVbApi _masterVbApi = new HotelRealtaVbApi(Configuration?.GetConnectionString("Hotel_Realta"));
+
+            //=====================================Service_Task==============================================
+
+            //create Service_Task
+            var newService_Task = _masterVbApi.RepositoryManager.ServiceTask.CreateServiceTask(new VBMasterDbLib.Model.service_task
+            {
+                seta_name = "Waiter",
+                seta_seq = 1
+            });
+            Console.WriteLine($"New Service_Task :{newService_Task}");
+
+            ////delete Service_Task
+            //var rowDelete = _masterVbApi.RepositoryManager.Service_Task.DeleteService_Task("platinum");
+            //Console.WriteLine($"Delete Service_Task Row : {rowDelete}");
+
+            //find all Service_Task
+            //var listService_Task = _masterVbApi.RepositoryManager.Service_Task.FindAllService_Task();
+            //foreach (var item in listService_Task)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+
+            //// find Service_Task by id
+            //var FindService_TaskById = _masterVbApi.RepositoryManager.Service_Task.FindService_TaskById("GOLD");
+            //Console.WriteLine($"Found Service_Task: {FindService_TaskById}");
+
+            //Update Service_Task By ID
+            //var updateService_Task = _masterVbApi.RepositoryManager.Service_Task.UpdateService_TaskById("platinum", "aaaaaaaaaaaaaaaaaaaa");
+            //Console.WriteLine($"{updateService_Task}");
+
+            //update Service_Task by SP
+            //var updateService_TaskBySp = _masterVbApi.RepositoryManager.Service_Task.UpdateService_TaskBySp("platinum", "BBBBBBBBBBBBBB", true);
+            ////var updateService_TaskSpResult = _masterVbApi.RepositoryManager.Regions.FindRegionsById(20);
+            //Console.WriteLine($"{updateService_TaskBySp}");
+
+            //=====================================Service_Task==============================================
+
+            //=====================================MEMBERS==============================================
+
+            //create members
+            //var newMembers = _masterVbApi.RepositoryManager.Members.CreateMembers(new VBMasterDbLib.Model.Members
+            //{
+            //    Memb_name = "platinum",
+            //    Memb_description = null
+            //});
+            //Console.WriteLine($"New Regions :{newMembers}");
+
+            ////delete members
+            //var rowDelete = _masterVbApi.RepositoryManager.Members.DeleteMembers("platinum");
+            //Console.WriteLine($"Delete Members Row : {rowDelete}");
+
+            //find all Members
+            //var listMembers = _masterVbApi.RepositoryManager.Members.FindAllMembers();
+            //foreach (var item in listMembers)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+
+            //// find members by id
+            //var FindMembersById = _masterVbApi.RepositoryManager.Members.FindMembersById("GOLD");
+            //Console.WriteLine($"Found Members: {FindMembersById}");
+
+            //Update Members By ID
+            //var updateMembers = _masterVbApi.RepositoryManager.Members.UpdateMembersById("platinum", "aaaaaaaaaaaaaaaaaaaa");
+            //Console.WriteLine($"{updateMembers}");
+
+            //update Members by SP
+            //var updateMembersBySp = _masterVbApi.RepositoryManager.Members.UpdateMembersBySp("platinum", "BBBBBBBBBBBBBB", true);
+            ////var updateMembersSpResult = _masterVbApi.RepositoryManager.Regions.FindRegionsById(20);
+            //Console.WriteLine($"{updateMembersBySp}");
+
+            //=====================================MEMBERS==============================================
+
             //=====================================REGIONS==============================================
             //create Regions
             //var newRegions = _masterVbApi.RepositoryManager.Regions.CreateRegions(new VBMasterDbLib.Model.Regions
@@ -22,12 +95,9 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
             //});
             //Console.WriteLine($"New Regions :{newRegions}");
 
-
             ////delete Regions
             //var rowDelete = _masterVbApi.RepositoryManager.Regions.DeleteRegions(28);
             //Console.WriteLine($"Delete Regions Row : {rowDelete}");
-
-
 
             //find all Regions
             //var listRegions = _masterVbApi.RepositoryManager.Regions.FindAllRegions();
@@ -57,17 +127,14 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
             //create Country
             //var newCountry = _masterVbApi.RepositoryManager.Country.CreateCountry(new VBMasterDbLib.Model.Country
             //{
-            //    Country_name = "BOGOR",
-            //    Country_region_id = 10
+            //    Country_name = "LAMPOENG",
+            //    Country_region_id = 9
             //});
             //Console.WriteLine($"New Country :{newCountry}");
-
 
             ////delete Country
             //var rowDelete = _masterVbApi.RepositoryManager.Country.DeleteCountry(25);
             //Console.WriteLine($"Delete Country Row : {rowDelete}");
-
-
 
             //find all country
             //var listcountry = _masterVbApi.RepositoryManager.Country.FindAllCountry();
@@ -85,9 +152,9 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
             //Console.WriteLine($"{updateCountry}");
 
             //update Country by SP
-            var updateCountryBySp = _masterVbApi.RepositoryManager.Country.UpdateCountryBySp(22, "BOYOLALI", 10, true);
-            //var updateCountrySpResult = _masterVbApi.RepositoryManager.Country.FindCountryById(20);
-            Console.WriteLine($"{updateCountryBySp}");
+            //var updateCountryBySp = _masterVbApi.RepositoryManager.Country.UpdateCountryBySp(22, "BOYOLALI", 10, true);
+            ////var updateCountrySpResult = _masterVbApi.RepositoryManager.Country.FindCountryById(20);
+            //Console.WriteLine($"{updateCountryBySp}");
 
             //=====================================COUNTRY==============================================
 
@@ -110,7 +177,6 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
             //Update Provinces By ID
             //var updateProvinces = _masterVbApi.RepositoryManager.Provinces.UpdateProvincesById(25, "YANTO", 4);
             //Console.WriteLine($"{updateProvinces}");
-
 
             //var ProvincesUpdateResult = _masterVbApi.RepositoryManager.Provinces.FindProvincesById(25);
             //Console.WriteLine($"{ProvincesUpdateResult}");
@@ -150,20 +216,35 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
             //    Console.WriteLine($"{item}");
             //}
 
+            ////delete Country
+            //var rowDelete = _masterVbApi.RepositoryManager.Address.DeleteAddress(71);
+            //Console.WriteLine($"Delete Address Row : {rowDelete}");
+
 
             //create address
             //var newAddress = _masterVbApi.RepositoryManager.Address.CreateAddress(new VBMasterDbLib.Model.Address
             //{
-            //    Addr_Id = 70,
+            //    Addr_Id = 80,
             //    Addr_line1 = "Jl. Danau Limboto",
-            //    Addr_line2 = "No 131 Sentul",
-            //    Addr_postal_code = "12345",
-            //    Addr_spatial_location = STPointFromText('Point(43.65, -79.38)', 4326)),
-            //    Addr_prov_id = 1
+
             //});
-            //Addr_spatial_location = Geography.('POINT(43.65 -79.38)', 4326),
 
             //Console.WriteLine($"New address :{newAddress}");
+
+
+            // find address by id
+            //var FindAddressById = _masterVbApi.RepositoryManager.Address.FindAddressById(20);
+            //Console.WriteLine($"Found Address: {FindAddressById}");
+
+            ////Update Address By ID
+            //var updateAddress = _masterVbApi.RepositoryManager.Address.UpdateAddressById(20, "Jl. Sentul"," AEON BOGOR","12312",2);
+            //Console.WriteLine($"{updateAddress}");
+
+            //update Provinces by SP
+            //var updateAddressBySp = _masterVbApi.RepositoryManager.Address.UpdateAddressBySp(20, "Jl. Sentul", " AEON BOGOR", "12312", 2);
+            //var updateAddressSpResult = _masterVbApi.RepositoryManager.Address.FindAddressById(26);
+            //Console.WriteLine($"{updateAddressSpResult}");
+
             ////=====================================ADDRESS==============================================
 
 
