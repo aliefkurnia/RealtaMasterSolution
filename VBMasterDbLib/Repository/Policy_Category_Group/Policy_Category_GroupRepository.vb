@@ -18,6 +18,7 @@ Namespace Repository
             Dim stmnt As String = " 
                                     INSERT INTO Master.policy_category_group(poca_poli_id,poca_cagro_id) 
                                     VALUES(@poca_poli_id,@poca_cagro_id)
+                                    
                                     ;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
@@ -68,7 +69,7 @@ Namespace Repository
             Dim policy_category_groupList As New List(Of Policy_Category_Group)
             Dim sql As String = "
                                   SELECT * FROM Master.policy_category_group 
-                                   ORDER BY memb_name DESC;"
+                                   ORDER BY poca_poli_id DESC;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
                 Using cmd As New SqlCommand With {.Connection = conn, .CommandText = sql}
@@ -79,8 +80,8 @@ Namespace Repository
 
                         While reader.Read()
                             policy_category_groupList.Add(New Policy_Category_Group() With {
-                                .Poca_poli_id = reader.GetString(0),
-                                .Poca_cagro_id = reader.GetString(1)
+                                .Poca_poli_id = reader.GetInt32(0),
+                                .Poca_cagro_id = reader.GetInt32(1)
                             })
                         End While
 

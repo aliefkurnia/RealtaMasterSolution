@@ -16,8 +16,9 @@ Namespace Repository
             Dim newPolicy As New Policy()
 
             Dim stmnt As String = " 
-                                    INSERT INTO Master.Policy(poli_id,poli_name,poli_description) 
-                                    VALUES(@poli_id,@poli_name,@poli_description)
+                                    INSERT INTO Master.Policy(poli_name,poli_description) 
+                                    VALUES(@poli_name,@poli_description)
+                                    SELECT cast(scope_identity() as int)
                                     ;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
@@ -43,7 +44,7 @@ Namespace Repository
             Return newPolicy
         End Function
 
-        Public Function DeletePolicy(poli_id As String) As String Implements IPolicyRepository.DeletePolicy
+        Public Function DeletePolicy(poli_id As Integer) As Integer Implements IPolicyRepository.DeletePolicy
             Dim rowEffect As Int32 = 0
 
             Dim stmnt As String = "DELETE from Master.policy WHERE poli_id = @poli_id"
@@ -83,8 +84,8 @@ Namespace Repository
 
                         While reader.Read()
                             MemberList.Add(New Policy() With {
-                                .Poli_id = reader.GetString(0),
-                                .Poli_name = reader.GetString(2),
+                                .Poli_id = reader.GetInt32(0),
+                                .Poli_name = reader.GetString(1),
                                 .Poli_description = If(reader.IsDBNull(2), "", reader.GetString(2))
                             })
                         End While
@@ -104,7 +105,7 @@ Namespace Repository
             Throw New NotImplementedException()
         End Function
 
-        Public Function FindPolicyById(memb_name As String) As Policy Implements IPolicyRepository.FindPolicyById
+        Public Function FindPolicyById(poli_id As Integer) As Policy Implements IPolicyRepository.FindPolicyById
             Dim findPolicy As New Policy
 
             Dim stmnt As String = "SELECT *
@@ -114,14 +115,14 @@ Namespace Repository
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
                 Using cmd As New SqlCommand With {.Connection = conn, .CommandText = stmnt}
 
-                    cmd.Parameters.AddWithValue("@memb_name", memb_name)
+                    cmd.Parameters.AddWithValue("@poli_id", poli_id)
 
                     Try
                         conn.Open()
                         Dim reader = cmd.ExecuteReader()
                         If reader.HasRows Then
                             reader.Read()
-                            findPolicy.Poli_id = reader.GetString(0)
+                            findPolicy.Poli_id = reader.GetInt32(0)
                             findPolicy.Poli_name = reader.GetString(1)
                             findPolicy.Poli_description = reader.GetString(2)
                         End If
@@ -140,7 +141,6 @@ Namespace Repository
 
             Dim stmnt As String = " UPDATE Master.Policy 
                                     SET 
-                                    poli_id = @poli_id,
                                     poli_name = @poli_name,
                                     poli_description = @poli_description 
                                     WHERE poli_id = @poli_id
@@ -175,7 +175,7 @@ Namespace Repository
             Dim stmnt As String = "Master.SpPolicy"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
-                Using cmd As New SqlCommand With {.Connection = conn, .CommandText = stmnt}
+                Using cmd As New SqlCommand With {.Connection = conn, .CommandText = stmnt, .CommandType = Data.CommandType.StoredProcedure}
                     cmd.Parameters.AddWithValue("@poli_id", poli_id)
                     cmd.Parameters.AddWithValue("@poli_name", poli_name)
                     cmd.Parameters.AddWithValue("@poli_description", poli_description)

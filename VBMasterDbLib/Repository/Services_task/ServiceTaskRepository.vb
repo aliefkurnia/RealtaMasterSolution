@@ -16,8 +16,9 @@ Namespace Repository
             Dim newserviceTask As New service_task()
 
             Dim stmnt As String = " 
-                                    INSERT INTO Master.serviceTask(seta_id,seta_name,seta_seq) 
-                                    VALUES(@seta_id,@seta_name,@seta_seq    )
+                                    INSERT INTO Master.service_task(seta_name,seta_seq) 
+                                    VALUES(@seta_name,@seta_seq)
+                                    SELECT cast(scope_identity() as int)
                                     ;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
@@ -71,7 +72,7 @@ Namespace Repository
         Public Function FindAllServiceTask() As List(Of service_task) Implements IServiceTaskRepository.FindAllServiceTask
             Dim ServiceTaskList As New List(Of service_task)
             Dim sql As String = "
-                                  SELECT * FROM Master.serviceTask 
+                                  SELECT * FROM Master.service_Task 
                                    ORDER BY seta_id DESC;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
@@ -108,7 +109,7 @@ Namespace Repository
             Dim findServiceTask As New service_task
 
             Dim stmnt As String = "SELECT *
-                                   FROM master.ServiceTask 
+                                   FROM master.Service_Task 
                                    WHERE seta_id = @seta_id;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
@@ -138,9 +139,8 @@ Namespace Repository
         Public Function UpdateServiceTaskById(seta_id As Integer, seta_name As String, seta_seq As Short, Optional showCommand As Boolean = False) As Boolean Implements IServiceTaskRepository.UpdateServiceTaskById
             Dim updateServiceTask As New service_task()
 
-            Dim stmnt As String = " UPDATE Master.ServiceTask 
+            Dim stmnt As String = " UPDATE Master.Service_Task 
                                     SET 
-                                    seta_id = @seta_id,
                                     seta_name = @seta_name,
                                     seta_seq = @seta_seq 
                                     WHERE seta_id = @seta_id

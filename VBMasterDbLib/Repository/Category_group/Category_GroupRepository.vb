@@ -16,8 +16,9 @@ Namespace Repository
             Dim newCategory_Group As New category_Group()
 
             Dim stmnt As String = " 
-                                    INSERT INTO Master.Category_Group(cagro_id,cagro_name,cagro_description,cagro_type,cagro_icon,cagro_icon_url) 
-                                    VALUES(@cagro_id,@cagro_name,@cagro_description,@cagro_type,@cagro_icon,@cagro_icon_url)
+                                    INSERT INTO Master.Category_Group(cagro_name,cagro_description,cagro_type,cagro_icon,cagro_icon_url) 
+                                    VALUES(@cagro_name,@cagro_description,@cagro_type,@cagro_icon,@cagro_icon_url)
+                                    SELECT cast(scope_identity() as int)
                                     ;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
@@ -26,12 +27,12 @@ Namespace Repository
                     Dim check1 = If(category_Group.Cagro_icon Is Nothing, DBNull.Value, category_Group.Cagro_icon)
                     Dim check2 = If(category_Group.Cagro_icon_url Is Nothing, DBNull.Value, category_Group.Cagro_icon_url)
 
-                    cmd.Parameters.AddWithValue("@memb_name", category_Group.Cagro_id)
-                    cmd.Parameters.AddWithValue("@memb_name", category_Group.Cagro_name)
-                    cmd.Parameters.AddWithValue("@memb_description", check)
-                    cmd.Parameters.AddWithValue("@memb_name", category_Group.Cagro_type)
-                    cmd.Parameters.AddWithValue("@memb_description", check1)
-                    cmd.Parameters.AddWithValue("@memb_description", check2)
+                    cmd.Parameters.AddWithValue("@Cagro_id", category_Group.Cagro_id)
+                    cmd.Parameters.AddWithValue("@Cagro_name", category_Group.Cagro_name)
+                    cmd.Parameters.AddWithValue("@cagro_description", check)
+                    cmd.Parameters.AddWithValue("@Cagro_type", category_Group.Cagro_type)
+                    cmd.Parameters.AddWithValue("@cagro_icon", check1)
+                    cmd.Parameters.AddWithValue("@cagro_icon_url", check2)
 
                     Try
                         conn.Open()
@@ -48,7 +49,7 @@ Namespace Repository
             Return newCategory_Group
         End Function
 
-        Public Function Deletecategory_Group(cagro_id As String) As String Implements ICategory_GroupRepository.Deletecategory_Group
+        Public Function Deletecategory_Group(cagro_id As Integer) As Integer Implements ICategory_GroupRepository.Deletecategory_Group
             Dim rowEffect As Int32 = 0
 
             Dim stmnt As String = "DELETE from Master.category_group WHERE cagro_id = @cagro_id"
@@ -112,12 +113,12 @@ Namespace Repository
             Throw New NotImplementedException()
         End Function
 
-        Public Function Findcategory_GroupById(cagro_id As String) As category_Group Implements ICategory_GroupRepository.Findcategory_GroupById
+        Public Function Findcategory_GroupById(cagro_id As Integer) As category_Group Implements ICategory_GroupRepository.Findcategory_GroupById
             Dim findCategory_Group As New category_Group
 
             Dim stmnt As String = "SELECT *
                                    FROM master.Category_Group 
-                                   WHERE memb_name = @memb_name;"
+                                   WHERE cagro_id = @cagro_id;"
 
             Using conn As New SqlConnection With {.ConnectionString = _context.GetConnectionString}
                 Using cmd As New SqlCommand With {.Connection = conn, .CommandText = stmnt}
@@ -151,11 +152,10 @@ Namespace Repository
 
             Dim stmnt As String = " UPDATE Master.Category_Group 
                                     SET 
-                                    cagro_id = @cagro_id
-                                    cagro_name = @cagro_name
-                                    cagro_description = @cagro_description
-                                    cagro_type = @cagro_type
-                                    cagro_icon = @cagro_icon
+                                    cagro_name = @cagro_name,
+                                    cagro_description = @cagro_description,
+                                    cagro_type = @cagro_type,
+                                    cagro_icon = @cagro_icon,
                                     cagro_icon_url = @cagro_icon_url
                                     WHERE cagro_id = @cagro_id
                                     "

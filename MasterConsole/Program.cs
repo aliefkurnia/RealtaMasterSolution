@@ -15,37 +15,191 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
             BuildConfig();
             IHotelRealtaVbApi _masterVbApi = new HotelRealtaVbApi(Configuration?.GetConnectionString("Hotel_Realta"));
 
+
+            //=====================================category_group==============================================
+
+            //create category_group
+            //var newcategory_group = _masterVbApi.RepositoryManager.category_group.Createcategory_Group(new VBMasterDbLib.Model.category_Group
+            //{
+            //    Cagro_name = "POOL",
+            //    Cagro_description = "blablaablabla",
+            //    Cagro_type = "facility",
+            //    Cagro_icon = "",
+            //    Cagro_icon_url = ""
+            //});
+            //Console.WriteLine($"New category_group :{newcategory_group}");
+
+            ////delete category_group
+            //var rowDelete = _masterVbApi.RepositoryManager.category_group.Deletecategory_Group(10);
+            //Console.WriteLine($"Delete category_group Row : {rowDelete}");
+
+            //find all category_group
+            //var listcategory_group = _masterVbApi.RepositoryManager.category_group.FindAllcategory_Group();
+            //foreach (var item in listcategory_group)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+
+            //// find category_group by id
+            //var Findcategory_groupById = _masterVbApi.RepositoryManager.category_group.Findcategory_GroupById(2);
+            //Console.WriteLine($"Found category_group: {Findcategory_groupById}");
+
+            //Update category_group By ID
+            //var updatecategory_group = _masterVbApi.RepositoryManager.category_group.Updatecategory_GroupById
+            //(8,"SWIMMING","AAAAA","service","blabla.png","www.test.com");
+            //Console.WriteLine($"{updatecategory_group}");
+
+            //update category_group by SP
+            var updatecategory_groupBySp = _masterVbApi.RepositoryManager.category_group.Updatecategory_GroupBySp(8, "SWIMMING", "BBBB", "service", "blabla.png", "www.test.com");
+            //var updatecategory_groupSpResult = _masterVbApi.RepositoryManager.Regions.FindRegionsById(20);
+            Console.WriteLine($"{updatecategory_groupBySp}");
+
+            //=====================================category_group==============================================
+
+            //=====================================policy_category_group==============================================
+
+            //create policy_category_group
+            //var newpolicy_category_group = _masterVbApi.RepositoryManager.Policy_Category_Group.CreatePolicy_Category_Group(new VBMasterDbLib.Model.Policy_Category_Group
+            //{
+            //    Poca_poli_id = 4,
+            //    Poca_cagro_id = 4
+            //});
+            //Console.WriteLine($"New policy_category_group :{newpolicy_category_group}");
+
+            ////delete policy_category_group
+            //var rowDelete = _masterVbApi.RepositoryManager.Policy_Category_Group.DeletePolicy_Category_Group(2);
+            //Console.WriteLine($"Delete policy_category_group Row : {rowDelete}");
+
+            //find all policy_category_group
+            //var listpolicy_category_group = _masterVbApi.RepositoryManager.Policy_Category_Group.FindAllPolicy_Category_Group();
+            //foreach (var item in listpolicy_category_group)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+
+            //// find policy_category_group by id
+            //var Findpolicy_category_groupById = _masterVbApi.RepositoryManager.Policy_Category_Group.FindPolicy_Category_GroupById(2);
+            //Console.WriteLine($"Found policy_category_group: {Findpolicy_category_groupById}");
+
+            //Update policy_category_group By ID
+            //var updatepolicy_category_group = _masterVbApi.RepositoryManager.Policy_Category_Group.UpdatePolicy_Category_GroupById
+            //(4, 7);
+            //Console.WriteLine($"{updatepolicy_category_group}");
+
+            //update policy_category_group by SP
+            //var updatepolicy_category_groupBySp = _masterVbApi.RepositoryManager.Policy_Category_Group.UpdatePolicy_Category_GroupBySp(4, 3);
+            ////var updatepolicy_category_groupSpResult = _masterVbApi.RepositoryManager.Regions.FindRegionsById(20);
+            //Console.WriteLine($"{updatepolicy_category_groupBySp}");
+
+            //=====================================policy_category_group==============================================
+
+            //=====================================price_items==============================================
+
+            //create price_items
+            //var newprice_items = _masterVbApi.RepositoryManager.price_items.Createprice_Items(new VBMasterDbLib.Model.price_items
+            //{
+            //    Prit_name = "DIAMOND",
+            //    Prit_price = 100000,
+            //    Prit_description = "DIAMOND",
+            //    Prit_type = "SNACK"
+            //});
+            //Console.WriteLine($"New price_items :{newprice_items}");
+
+            ////delete price_items
+            //var rowDelete = _masterVbApi.RepositoryManager.price_items.Deleteprice_Items(10);
+            //Console.WriteLine($"Delete price_items Row : {rowDelete}");
+
+            //find all price_items
+            //var listprice_items = _masterVbApi.RepositoryManager.price_items.FindAllprice_Items();
+            //foreach (var item in listprice_items)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+
+            //// find price_items by id
+            //var Findprice_itemsById = _masterVbApi.RepositoryManager.price_items.Findprice_ItemsById(2);
+            //Console.WriteLine($"Found price_items: {Findprice_itemsById}");
+
+            //Update price_items By ID
+            //var updateprice_items = _masterVbApi.RepositoryManager.price_items.Updateprice_ItemsById
+            //(5,"BRONJE",5000, "AAAAA", "FACILITY",DateTime.Now);
+            //Console.WriteLine($"{updateprice_items}");
+
+            //update price_items by SP
+            //var updateprice_itemsBySp = _masterVbApi.RepositoryManager.price_items.Updateprice_ItemsBySp(5, "anjay", 10000, "BBBB", "FACILITY", DateTime.Now);
+            ////var updateprice_itemsSpResult = _masterVbApi.RepositoryManager.Regions.FindRegionsById(20);
+            //Console.WriteLine($"{updateprice_itemsBySp}");
+
+            //=====================================price_items==============================================
+
+
+            //=====================================POLICY==============================================
+
+            //create policy
+            //var newpolicy = _masterVbApi.RepositoryManager.policy.CreatePolicy(new VBMasterDbLib.Model.Policy
+            //{
+            //    Poli_name = "DIAMOND",
+            //    Poli_description = "AAAAAAAAAAAAAAAAAAA"
+            //});
+            //Console.WriteLine($"New policy :{newpolicy}");
+
+            ////delete policy
+            //var rowDelete = _masterVbApi.RepositoryManager.policy.DeletePolicy(1);
+            //Console.WriteLine($"Delete policy Row : {rowDelete}");
+
+            //find all policy
+            //var listpolicy = _masterVbApi.RepositoryManager.policy.FindAllPolicy();
+            //foreach (var item in listpolicy)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+
+            //// find policy by id
+            //var FindpolicyById = _masterVbApi.RepositoryManager.policy.FindPolicyById(2);
+            //Console.WriteLine($"Found policy: {FindpolicyById}");
+
+            //Update policy By ID
+            //var updatepolicy = _masterVbApi.RepositoryManager.policy.UpdatePolicyById(5, "Satpam", "asdasdasd");
+            //Console.WriteLine($"{updatepolicy}");
+
+            //update policy by SP
+            //var updatepolicyBySp = _masterVbApi.RepositoryManager.policy.UpdatePolicyBySp(5, "BBBBBBBBBBBBBB", "CCCCCCCCCCC", true);
+            ////var updatepolicySpResult = _masterVbApi.RepositoryManager.Regions.FindRegionsById(20);
+            //Console.WriteLine($"{updatepolicyBySp}");
+
+            //=====================================POLICY==============================================
+
             //=====================================Service_Task==============================================
 
             //create Service_Task
-            var newService_Task = _masterVbApi.RepositoryManager.ServiceTask.CreateServiceTask(new VBMasterDbLib.Model.service_task
-            {
-                seta_name = "Waiter",
-                seta_seq = 1
-            });
-            Console.WriteLine($"New Service_Task :{newService_Task}");
+            //var newService_Task = _masterVbApi.RepositoryManager.ServiceTask.CreateServiceTask(new VBMasterDbLib.Model.service_task
+            //{
+            //    Seta_name = "Waiter",
+            //    Seta_seq = 1
+            //});
+            //Console.WriteLine($"New Service_Task :{newService_Task}");
 
             ////delete Service_Task
-            //var rowDelete = _masterVbApi.RepositoryManager.Service_Task.DeleteService_Task("platinum");
+            //var rowDelete = _masterVbApi.RepositoryManager.ServiceTask.DeleteServiceTask(6);
             //Console.WriteLine($"Delete Service_Task Row : {rowDelete}");
 
             //find all Service_Task
-            //var listService_Task = _masterVbApi.RepositoryManager.Service_Task.FindAllService_Task();
+            //var listService_Task = _masterVbApi.RepositoryManager.ServiceTask.FindAllServiceTask();
             //foreach (var item in listService_Task)
             //{
             //    Console.WriteLine($"{item}");
             //}
 
             //// find Service_Task by id
-            //var FindService_TaskById = _masterVbApi.RepositoryManager.Service_Task.FindService_TaskById("GOLD");
+            //var FindService_TaskById = _masterVbApi.RepositoryManager.ServiceTask.FindServiceTaskById(1);
             //Console.WriteLine($"Found Service_Task: {FindService_TaskById}");
 
             //Update Service_Task By ID
-            //var updateService_Task = _masterVbApi.RepositoryManager.Service_Task.UpdateService_TaskById("platinum", "aaaaaaaaaaaaaaaaaaaa");
+            //var updateService_Task = _masterVbApi.RepositoryManager.ServiceTask.UpdateServiceTaskById(1,"Satpam",1);
             //Console.WriteLine($"{updateService_Task}");
 
             //update Service_Task by SP
-            //var updateService_TaskBySp = _masterVbApi.RepositoryManager.Service_Task.UpdateService_TaskBySp("platinum", "BBBBBBBBBBBBBB", true);
+            //var updateService_TaskBySp = _masterVbApi.RepositoryManager.ServiceTask.UpdateServiceTaskBySp(1, "BBBBBBBBBBBBBB",1, true);
             ////var updateService_TaskSpResult = _masterVbApi.RepositoryManager.Regions.FindRegionsById(20);
             //Console.WriteLine($"{updateService_TaskBySp}");
 
@@ -247,23 +401,19 @@ namespace RealtaMasterSolution // Note: actual namespace depends on the project 
 
             ////=====================================ADDRESS==============================================
 
-
-
-
         }
-
-
 
 
         static void BuildConfig()
-        {
-            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true);
-            
-            Configuration = builder.Build();
-            Console.WriteLine(Configuration.GetConnectionString("hotel_realta"));
+            {
+                var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true);
+
+                Configuration = builder.Build();
+                Console.WriteLine(Configuration.GetConnectionString("hotel_realta"));
+            }
+
+
         }
+    } 
 
-
-    }
-}
